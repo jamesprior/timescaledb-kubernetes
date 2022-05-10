@@ -233,6 +233,8 @@ spec:
           value: {{ printf "{app: %s, cluster-name: %s, release: %s}" (include "timescaledb.fullname" .) (include "clusterName" .) .Release.Name  | quote }}
         - name: PATRONI_SCOPE
           value: {{ template "clusterName" . }}
+        - name: PATRONICTL_CONFIG_FILE
+          value: /etc/timescaledb/patroni.yaml
         - name: PGBACKREST_CONFIG
           value: /etc/pgbackrest/pgbackrest.conf
         # PGDATA and PGHOST are not required to let Patroni/PostgreSQL run correctly,
